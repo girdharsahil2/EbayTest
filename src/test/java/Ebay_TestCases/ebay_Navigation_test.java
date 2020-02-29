@@ -6,10 +6,8 @@ import org.testng.annotations.Listeners;
 import Ebay_Utilities.BaseClass;
 
 @Listeners(Ebay_Utilities.Listners.class)
-public class ebay_Navigation_test extends BaseClass{
-
-
-
+public class ebay_Navigation_test extends BaseClass
+{
 	@Test
 	public void ebay_navigation_valid() throws Exception 
 	{
@@ -26,8 +24,6 @@ public class ebay_Navigation_test extends BaseClass{
 
 		System.out.println("Title matched hence test is passed");
 		logger.info("Test Passed : Successfully navigated to Ebay website");
-
 	}
-
 }
 

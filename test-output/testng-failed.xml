@@ -5,7 +5,6 @@
     <classes>
       <class name="Ebay_TestCases.ebay_Navigation_test">
         <methods>
-          <include name="ebay_navigation_valid"/>
           <include name="setuptest"/>
           <include name="SetupSuite"/>
           <include name="teardownmethod"/>

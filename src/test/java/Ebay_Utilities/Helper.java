@@ -24,7 +24,6 @@ public class Helper {
 			System.out.println("Not able to take screenshot"+e.getMessage());
 		}
 		return screenshotpath;
-		
 	}
 	
 	public static String Currentdatetime() {
@@ -32,5 +31,4 @@ public class Helper {
 		Date currentDate = new Date();
 		return CustomFormat.format(currentDate);
 	}
-	
 }

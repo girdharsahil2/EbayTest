@@ -23,7 +23,7 @@ public class BaseClass {
 
 	public WebDriver driver=null;
 	public TestData_Reader testdata=null;
-	private ebay_landingpage landingpage=null;
+	public ebay_landingpage landingpage=null;
 	public Actions action=null;
 	public static ExtentReports reports=null;
 	public static ExtentTest logger=null;
@@ -36,43 +36,43 @@ public class BaseClass {
 		ExtentHtmlReporter html = new ExtentHtmlReporter(new File(System.getProperty("user.dir")+"/ExecutionReports/ebay_"+Helper.Currentdatetime()+".html"));
 		reports = new ExtentReports();
 		reports.attachReporter(html);
-		
+
 	}
-	
+
 	@BeforeTest
 	public void setuptest() {
 		driver = BrowserFactory.startApplication(driver, testdata.getBrowserName(), testdata.getURL());
+		action = new Actions(driver);
+		landingpage = new ebay_landingpage(driver);
 		String title = driver.getTitle();
 		if(title.equalsIgnoreCase("Artículos electrónicos, autos, ropa, objetos de colección, cupones y más | eBay")) {
-			
+
 			System.out.println("Navigated to Ebay website in Spanish language ");
 			System.out.println("***********Converting to english language***********");
+
+			action.moveToElement(landingpage.getLanguage_element()).perform();
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			action.moveToElement(landingpage.getLanguage_eng_element()).click().perform();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		}
 		else if(title.equalsIgnoreCase("Electronic items, cars, clothing, collectibles, coupons and more | eBay")) {
-			
+
 			System.out.println("Navigated to Ebay website in English language");
 		}
 
 		else 
 		{
 			System.out.println("navigated to wrong website");
+
 		}
 
-		action = new Actions(driver);
-		landingpage = new ebay_landingpage(driver);
-		action.moveToElement(landingpage.getLanguage_element()).perform();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		action.moveToElement(landingpage.getLanguage_eng_element()).click().perform();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	
-
 
 	@AfterMethod
 	public void teardownmethod(ITestResult result) throws Exception {
@@ -87,13 +87,10 @@ public class BaseClass {
 			logger.fail("Test Failed", MediaEntityBuilder.createScreenCaptureFromPath(Helper.CaptureScreenshot(driver)).build());
 		}
 		reports.flush();
-		
 	}
-	
+
 	@AfterTest
 	public void quitbrowser() {
 		BrowserFactory.CloseApplication(driver);
 	}
-
-
 }

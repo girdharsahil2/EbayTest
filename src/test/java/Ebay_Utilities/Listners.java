@@ -22,7 +22,6 @@ public class Listners implements ITestListener {
 
 	public void onTestSkipped(ITestResult result) {
 		System.out.println("******"+result.getName()+" - Test case Skipped ******");
-		
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
@@ -39,5 +38,4 @@ public class Listners implements ITestListener {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

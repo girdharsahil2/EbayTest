@@ -26,7 +26,6 @@ public class BrowserFactory {
 		driver.get(URL);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
-		
 	}
 	
 	public static void CloseApplication(WebDriver driver) {
