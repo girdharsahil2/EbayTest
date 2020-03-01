@@ -1,9 +1,12 @@
 package Ebay_TestCases;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -46,8 +49,29 @@ public class ebay_Search_test extends BaseClass
 		
 		js.executeScript("arguments[0].scrollIntoView();", shoesearch.getsize10btn());
 		shoesearch.getsize10btn().click();
-		
 		Thread.sleep(5000);
+	
+		//action.moveToElement(shoesearch.getfilter_dropdown()).click().perform();
+		shoesearch.getfilter_dropdown().click();
+		action.moveToElement(shoesearch.getincprice_dropdown()).click().perform();
+		Thread.sleep(5000);
+		
+		String shoeresult_raw = (shoesearch.getshoe_searchresult().getText()).substring(0, 5);
+		System.out.println("The search results for size 10 PUMA shoes is "+shoeresult_raw);
+		Thread.sleep(5000);
+		
+		List<WebElement> ls = shoesearch.getlist_productsearched();
+		int count = ls.size();
+		System.out.println("Total Search reasults are in the current page is "+count);
+		
+		for(int i=0;i<5;i++) { 
+			String shoetext = ls.get(i).getText();
+			//System.out.println("The name of the product is "+shoetext); 
+			List<WebElement> ls_price = shoesearch.getproductprice();
+			String ShoePrice = ls_price.get(i).getText();
+			System.out.println("The name of the product is "+shoetext+" And The price is "+ShoePrice);
+			}
+		
 	}
 
 

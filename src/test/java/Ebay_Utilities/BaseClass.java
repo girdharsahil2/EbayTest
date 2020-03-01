@@ -24,7 +24,7 @@ public class BaseClass {
 	public WebDriver driver=null;
 	public TestData_Reader testdata=null;
 	public ebay_landingpage landingpage=null;
-	public Actions action=null;
+	public static Actions action=null;
 	public static ExtentReports reports=null;
 	public static ExtentTest logger=null;
 
