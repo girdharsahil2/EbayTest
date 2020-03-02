@@ -4,9 +4,12 @@ import org.testng.annotations.Test;
 
 import Ebay_Pages.Shoe_Searchpage;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -17,6 +20,11 @@ import Ebay_Utilities.BaseClass;
 @Listeners(Ebay_Utilities.Listners.class)
 public class ebay_Navigation_test extends BaseClass
 {
+	Shoe_Searchpage shoesearch =null;
+	List<WebElement> ls =null;
+	List<WebElement> ls_price =null;
+	int count;
+	
 	@Test(priority=1)
 	public void ebay_navigation_valid() throws Exception 
 	{
@@ -54,7 +62,7 @@ public class ebay_Navigation_test extends BaseClass
 		Thread.sleep(10000);
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		Shoe_Searchpage shoesearch = new Shoe_Searchpage(driver);
+		shoesearch = new Shoe_Searchpage(driver);
 		
 		js.executeScript("arguments[0].scrollIntoView();",shoesearch.getbrandtextbox());
 		logger.pass("Succesfully scrolled to search brand textbox");
@@ -73,28 +81,64 @@ public class ebay_Navigation_test extends BaseClass
 	
 		//action.moveToElement(shoesearch.getfilter_dropdown()).click().perform();
 		shoesearch.getfilter_dropdown().click();
+		logger.pass("Successfully clicked on filter dropdown");
 		action.moveToElement(shoesearch.getincprice_dropdown()).click().perform();
+		logger.pass("Successfully selected Price + Shipping: lowest first filter from dropdown");
 		Thread.sleep(5000);
 		
 		String shoeresult_raw = (shoesearch.getshoe_searchresult().getText()).substring(0, 5);
-		System.out.println("The search results for size 10 PUMA shoes is "+shoeresult_raw);
-		Thread.sleep(5000);
+		System.out.println("Total search results for size 10 PUMA shoes is "+shoeresult_raw);
+		logger.pass("Successfully printed total result in console");
+		Thread.sleep(2000);
 		
-		List<WebElement> ls = shoesearch.getlist_productsearched();
-		int count = ls.size();
+		ls = shoesearch.getlist_productsearched();
+		count = ls.size();
 		System.out.println("Total Search reasults in the current page are "+count);
+		
+		List actual_price_list = new ArrayList();
+		ls_price = shoesearch.getproductprice();
+		
+		for(WebElement ele:ls_price) {
+			String Price_Data = ele.getText();
+			actual_price_list.add(Price_Data);
+		}
+		
+		List temp_price_list = new ArrayList();
+		temp_price_list.addAll(actual_price_list);
+		Collections.sort(temp_price_list);
+		
+		Assert.assertTrue(actual_price_list.equals(temp_price_list));
+		
+	}
+	
+	@Test(priority=3)
+	public void first5productswithprices() {
+		
+		logger=reports.createTest("first5productswithprices TestCase","This is to print first five products with their prices on Console");
+		logger.info("first5productswithprices test case started");
 		
 		for(int i=0;i<5;i++) { 
 			String shoetext = ls.get(i).getText();
-			List<WebElement> ls_price = shoesearch.getproductprice();
 			String ShoePrice = ls_price.get(i).getText();
-			System.out.println("The name of the product is "+shoetext+" And The price is "+ShoePrice);
-		}
-		
+			System.out.println("The name of the product is "+shoetext+" And The price is "+ShoePrice);}
+		logger.pass("Successfully printed the first five products with their prices on Console");
+	}
+	
+	@Test(priority=4)
+	public void Order_print_products_byprice_descendant() throws Throwable 
+	{
+		logger=reports.createTest("Order_print_products_byprice_descendant TestCase","This is to Order_print_products_byprice_descendant on Console");
+		logger.info("Order_print_products_byprice_descendant test case started");
 		shoesearch.getfilter_dropdown().click();
 		action.moveToElement(shoesearch.get_decprice_dropdown()).click().perform();
 		Thread.sleep(5000);
 		
+		for(int i=0;i==count;i++) { 
+			String shoetext1 = ls.get(i).getText();
+			System.out.println("The name of the product is "+shoetext1);
+			}
+		logger.pass("Successfully printed the products with their prices on Console by price descendant");
 	}
+	
 }
 

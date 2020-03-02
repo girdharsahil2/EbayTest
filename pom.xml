@@ -1,9 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>Ebay_AutomationProject</groupId>
-  <artifactId>Ebay_AutomationProject</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Ebay_AutomationProject</groupId>
+	<artifactId>Ebay_AutomationProject</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<profiles>
+		<profile>
+			<id>Ebay-tests</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.0.0-M4</version>
+						<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>testng.xml</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-chrome-driver</artifactId>
@@ -21,9 +42,9 @@
 			<version>4.0.0-alpha-4</version>
 		</dependency>
 		<dependency>
-    		<groupId>commons-io</groupId>
-    		<artifactId>commons-io</artifactId>
-    		<version>2.6</version>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
 		</dependency>
 		<dependency>
 			<groupId>com.aventstack</groupId>
