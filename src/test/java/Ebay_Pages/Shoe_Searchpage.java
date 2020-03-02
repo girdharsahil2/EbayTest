@@ -12,7 +12,7 @@ public class Shoe_Searchpage {
 	By puma_checkbox_loc = By.xpath("//input[@type='checkbox' and @aria-label='PUMA']");
 	By size_10_loc = By.xpath("//input[@type='checkbox' and @aria-label='10']");
 	By ShoeSearchResult_loc = By.xpath("//h1[@class='srp-controls__count-heading']");
-	By filter_dropdwn_loc = By.id("//button[@id='w23-button'][@class='fake-menu-button__button expand-btn expand-btn--small expand-btn--secondary']");
+	By filter_dropdwn_loc = By.xpath("/html[1]/body[1]/div[4]/div[6]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/span[1]/button[1]");
 	By inc_price_loc = By.xpath("//span[@id='w23-content-0[3]']");
 	By prod_list_loc = By.xpath("//*[h3[starts-with(@class, 's-item__title')]]");
 	By prod_price_loc = By.xpath("//*[starts-with(@class, 's-item__price')]");

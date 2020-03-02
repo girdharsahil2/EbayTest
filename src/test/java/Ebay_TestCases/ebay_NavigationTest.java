@@ -18,7 +18,7 @@ import org.testng.annotations.Listeners;
 import Ebay_Utilities.BaseClass;
 
 @Listeners(Ebay_Utilities.Listners.class)
-public class ebay_Navigation_test extends BaseClass
+public class ebay_NavigationTest extends BaseClass
 {
 	Shoe_Searchpage shoesearch =null;
 	List<WebElement> ls =null;
@@ -98,10 +98,15 @@ public class ebay_Navigation_test extends BaseClass
 		List actual_price_list = new ArrayList();
 		ls_price = shoesearch.getproductprice();
 		
-		for(WebElement ele:ls_price) {
+		for(count=0;count<5;count++) {
+			String price_list = ls_price.get(count).getText();
+			actual_price_list.add(price_list);
+		}
+		
+		/*for(WebElement ele:ls_price) {
 			String Price_Data = ele.getText();
 			actual_price_list.add(Price_Data);
-		}
+		}*/
 		
 		List temp_price_list = new ArrayList();
 		temp_price_list.addAll(actual_price_list);
@@ -133,11 +138,15 @@ public class ebay_Navigation_test extends BaseClass
 		action.moveToElement(shoesearch.get_decprice_dropdown()).click().perform();
 		Thread.sleep(5000);
 		
-		for(int i=0;i==count;i++) { 
-			String shoetext1 = ls.get(i).getText();
+		List<WebElement> ls_desc = shoesearch.getlist_productsearched();
+		int desc_count = ls_desc.size();
+		
+		for(int j=0;j<desc_count;j++) { 
+			
+			String shoetext1 = ls_desc.get(j).getText();
 			System.out.println("The name of the product is "+shoetext1);
 			}
-		logger.pass("Successfully printed the products with their prices on Console by price descendant");
+		logger.pass("Successfully printed the products on Console by price descendant");
 	}
 	
 }
