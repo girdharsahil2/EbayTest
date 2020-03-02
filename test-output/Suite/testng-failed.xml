@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite parallel="none" name="Failed suite [Suite]">
-  <test parallel="none" name="Test(failed)">
+<suite name="Failed suite [Suite]" parallel="none">
+  <test name="Test(failed)" parallel="none">
     <classes>
       <class name="Ebay_TestCases.ebay_Navigation_test">
         <methods>
+          <include name="Search_Ebay"/>
           <include name="setuptest"/>
           <include name="SetupSuite"/>
+          <include name="quitbrowser"/>
           <include name="teardownmethod"/>
         </methods>
       </class> <!-- Ebay_TestCases.ebay_Navigation_test -->
-      <class name="Ebay_TestCases.ebay_Search_test">
-        <methods>
-          <include name="Search_Ebay"/>
-          <include name="teardownmethod"/>
-        </methods>
-      </class> <!-- Ebay_TestCases.ebay_Search_test -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

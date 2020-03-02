@@ -3,7 +3,7 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Ebay_TestCases.ebay_Search_test">
+      <class name="Ebay_TestCases.ebay_Navigation_test">
         <methods>
           <include name="Search_Ebay"/>
           <include name="setuptest"/>
@@ -11,7 +11,7 @@
           <include name="quitbrowser"/>
           <include name="teardownmethod"/>
         </methods>
-      </class> <!-- Ebay_TestCases.ebay_Search_test -->
+      </class> <!-- Ebay_TestCases.ebay_Navigation_test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

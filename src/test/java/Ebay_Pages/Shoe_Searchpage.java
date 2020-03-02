@@ -16,6 +16,7 @@ public class Shoe_Searchpage {
 	By inc_price_loc = By.xpath("//span[@id='w23-content-0[3]']");
 	By prod_list_loc = By.xpath("//*[h3[starts-with(@class, 's-item__title')]]");
 	By prod_price_loc = By.xpath("//*[starts-with(@class, 's-item__price')]");
+	By dec_price_loc =By.xpath("//span[@id='w23-content-0[4]']");
 	
 	public WebDriver driver;
 	
@@ -59,4 +60,9 @@ public class Shoe_Searchpage {
 		return driver.findElements(prod_price_loc);
 		
 	}
+	
+	public WebElement get_decprice_dropdown() {
+		return driver.findElement(dec_price_loc);
+	}
+	
 }

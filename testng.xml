@@ -4,7 +4,6 @@
   <test thread-count="5" name="Test">
     <classes>
       <class name="Ebay_TestCases.ebay_Navigation_test"/>
-      <class name="Ebay_TestCases.ebay_Search_test"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
