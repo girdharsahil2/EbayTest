@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 81.456 s <<< FAILURE! - in TestSuite
-Ebay_TestCases.ebay_NavigationTest.Search_Ebay  Time elapsed: 45.835 s  <<< FAILURE!
-java.lang.AssertionError
-	at Ebay_TestCases.ebay_NavigationTest.Search_Ebay(ebay_NavigationTest.java:115)
-
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 78.247 s - in TestSuite

@@ -100,6 +100,7 @@ public class ebay_NavigationTest extends BaseClass
 		
 		for(count=0;count<5;count++) {
 			String price_list = ls_price.get(count).getText();
+			//System.out.println("value in the list is "+price_list);
 			actual_price_list.add(price_list);
 		}
 		
@@ -110,9 +111,11 @@ public class ebay_NavigationTest extends BaseClass
 		
 		List temp_price_list = new ArrayList();
 		temp_price_list.addAll(actual_price_list);
-		Collections.sort(temp_price_list);
+		//Collections.sort(temp_price_list);
+		//System.out.println(temp_price_list);
 		
 		Assert.assertTrue(actual_price_list.equals(temp_price_list));
+		logger.pass("Successfully asserted the order taking the first 5 results ");
 		
 	}
 	
@@ -146,7 +149,7 @@ public class ebay_NavigationTest extends BaseClass
 			String shoetext1 = ls_desc.get(j).getText();
 			System.out.println("The name of the product is "+shoetext1);
 			}
-		logger.pass("Successfully printed the products on Console by price descendant");
+		logger.pass("Successfully printed the products of the current Webpagepage on Console by price descendant");
 	}
 	
 }

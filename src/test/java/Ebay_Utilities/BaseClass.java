@@ -29,7 +29,7 @@ public class BaseClass {
 
 	@BeforeSuite
 	public void SetupSuite() {
-		System.out.println("driver="+driver);
+		//System.out.println("driver="+driver);
 		testdata = new TestData_Reader();
 		ExtentHtmlReporter html = new ExtentHtmlReporter(new File(System.getProperty("user.dir")+"/ExecutionReports/ebay_"+Helper.Currentdatetime()+".html"));
 		reports = new ExtentReports();

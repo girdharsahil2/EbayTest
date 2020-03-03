@@ -5,12 +5,11 @@
     <classes>
       <class name="Ebay_TestCases.ebay_NavigationTest">
         <methods>
-          <include name="first5productswithprices"/>
           <include name="Search_Ebay"/>
-          <include name="ebay_navigation_valid"/>
           <include name="setuptest"/>
-          <include name="Order_print_products_byprice_descendant"/>
           <include name="SetupSuite"/>
+          <include name="quitbrowser"/>
+          <include name="teardownmethod"/>
         </methods>
       </class> <!-- Ebay_TestCases.ebay_NavigationTest -->
     </classes>
